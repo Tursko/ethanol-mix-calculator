@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.nomads.ethanolmixcalculator.databinding.FragmentFirstBinding
 
 /**
@@ -34,6 +36,11 @@ class FirstFragment : Fragment() {
 
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        }
+
+        binding.buttonCalculate.setOnClickListener { view ->
+            Snackbar.make(view, "Perform calculation", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
         }
     }
 

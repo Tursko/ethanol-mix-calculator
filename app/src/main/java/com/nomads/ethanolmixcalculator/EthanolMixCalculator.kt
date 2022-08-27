@@ -1,15 +1,16 @@
 package com.nomads.ethanolmixcalculator
 
-class EthanolMixCalculator {
-    class Result(val e85ToAdd: Volume, val pumpGasToAdd: Volume, val finalEthanolPercentage: Double) {}
-
-    var tankVolume: Volume = Volume(0.0, Volume.UoM.Gallons)
-    var gasEthanolPercentage: Double = 0.0
-    var e85EthanolPercentage: Double = 0.0
-    var targetEthanolPercentage: Double = 0.0
-    var currentFuelPercentage: Double = 0.0
+// var is mutable
+// val is read only
+class EthanolMixCalculator(
+    var tankVolume: Volume = Volume(0.0, Volume.UoM.Gallons),
+    var gasEthanolPercentage: Double = 0.0,
+    var e85EthanolPercentage: Double = 0.0,
+    var targetEthanolPercentage: Double = 0.0,
+    var currentFuelPercentage: Double = 0.0,
     var currentEthanolPercentage: Double = 0.0
-
+) {
+    class Result(val e85ToAdd: Volume, val pumpGasToAdd: Volume, val finalEthanolPercentage: Double) {}
 
     val currentFuel: Volume
         get() = tankVolume * currentFuelPercentage

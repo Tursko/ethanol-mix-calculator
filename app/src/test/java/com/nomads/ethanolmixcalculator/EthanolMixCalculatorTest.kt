@@ -15,7 +15,7 @@ class EthanolMixCalculatorTest {
         var currentEthanolPercentage: Double = .10
 
         var calculator = EthanolMixCalculator(tankVolume, gasEthanolPercentage, e85EthanolPercentage, targetEthanolPercentage, currentFuelPercentage, currentEthanolPercentage)
-        var result = calculator.CalculateMix();
+        var result = calculator.calculateMix();
 
         Assert.assertEquals(
             "e85",
@@ -47,7 +47,7 @@ class EthanolMixCalculatorTest {
         var currentEthanolPercentage: Double = 0.0
 
         var calculator = EthanolMixCalculator(tankVolume, gasEthanolPercentage, e85EthanolPercentage, targetEthanolPercentage, currentFuelPercentage, currentEthanolPercentage)
-        var result = calculator.CalculateMix();
+        var result = calculator.calculateMix();
 
         Assert.assertEquals(
             "e85",
@@ -79,7 +79,7 @@ class EthanolMixCalculatorTest {
         var currentEthanolPercentage: Double = .30
 
         var calculator = EthanolMixCalculator(tankVolume, gasEthanolPercentage, e85EthanolPercentage, targetEthanolPercentage, currentFuelPercentage, currentEthanolPercentage)
-        var result = calculator.CalculateMix();
+        var result = calculator.calculateMix();
 
         Assert.assertEquals(
             "e85",
@@ -111,7 +111,7 @@ class EthanolMixCalculatorTest {
         var currentEthanolPercentage: Double = .30
 
         var calculator = EthanolMixCalculator(tankVolume, gasEthanolPercentage, e85EthanolPercentage, targetEthanolPercentage, currentFuelPercentage, currentEthanolPercentage)
-        var result = calculator.CalculateMix();
+        var result = calculator.calculateMix();
 
         Assert.assertEquals(
             "e85",
@@ -143,7 +143,7 @@ class EthanolMixCalculatorTest {
         var currentEthanolPercentage: Double = .10
 
         var calculator = EthanolMixCalculator(tankVolume, gasEthanolPercentage, e85EthanolPercentage, targetEthanolPercentage, currentFuelPercentage, currentEthanolPercentage)
-        var result = calculator.CalculateMix();
+        var result = calculator.calculateMix();
 
         Assert.assertEquals(
             "e85",

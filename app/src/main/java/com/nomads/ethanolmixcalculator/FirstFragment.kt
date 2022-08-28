@@ -15,7 +15,6 @@ import com.nomads.ethanolmixcalculator.databinding.FragmentFirstBinding
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
-    private var _calculator: EthanolMixCalculator? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -29,28 +28,10 @@ class FirstFragment : Fragment() {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
 
         // TODO temp code - should populate with default calculator values if nothing to pull from DB
-        _calculator = EthanolMixCalculator(Volume(12.4, Volume.UoM.Gallons), 0.1, 0.75, 0.3, 0.2, 0.1)
-        binding.viewModel = FirstFragmentViewModel(_calculator!!)
+        val calculator = EthanolMixCalculator(Volume(12.4, Volume.UoM.Gallons), 0.1, 0.75, 0.3, 0.2, 0.1)
+        binding.viewModel = FirstFragmentViewModel(calculator)
 
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-//        binding.buttonFirst.setOnClickListener {
-//            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-//        }
-
-        binding.buttonCalculate.setOnClickListener { view ->
-
-            // TODO more elegant way to do this?
-            val result = _calculator!!.calculateMix()
-            _binding?.viewModel?.setOutputValues(result)
-
-            Snackbar.make(view, "Perform calculation", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
     }
 
     override fun onDestroyView() {

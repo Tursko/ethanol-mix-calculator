@@ -1,7 +1,9 @@
 package com.nomads.ethanolmixcalculator
 
+import android.view.View
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
+import com.google.android.material.snackbar.Snackbar
 import kotlin.math.roundToInt
 
 // TODO should this be : ViewModel(), Observable by BaseObservable()?
@@ -30,6 +32,9 @@ class FirstFragmentViewModel(private val calculator: EthanolMixCalculator) : Bas
                 return
 
             val newVal = enumValues[value]
+            if (newVal == calculator.tankVolume.uom)
+                return;
+
             calculator.tankVolume = Volume(calculator.tankVolume.value, newVal)
             clearOutputValues()
             notifyPropertyChanged(BR.tankVolumeUomPosition)
@@ -37,7 +42,7 @@ class FirstFragmentViewModel(private val calculator: EthanolMixCalculator) : Bas
 
     // binding for UoM dropdown options
     @Bindable
-    fun getVolumeOptions() : Array<String> = Volume.UoM.values().map { it.name }.toTypedArray()
+    fun getVolumeUomOptions() : Array<String> = Volume.UoM.values().map { it.name }.toTypedArray()
 
     @get:Bindable
     var currentFuelPercentage: String
@@ -129,14 +134,21 @@ class FirstFragmentViewModel(private val calculator: EthanolMixCalculator) : Bas
             notifyPropertyChanged(BR.addE85Message)
         }
 
-    fun clearOutputValues() {
-        addGasMessage = ""
-        addE85Message = ""
+    fun onCalculateButtonClicked(view: View) {
+        val result = calculator.calculateMix()
+        setOutputValues(result)
+
+        Snackbar.make(view, "Calculation complete :)", Snackbar.LENGTH_LONG)
+                .show()
     }
 
-    fun setOutputValues(resultToShow: EthanolMixCalculator.Result) {
-        // TODO format floats tto show less decimal places
-        addGasMessage = "You should add ${resultToShow.pumpGasToAdd.toString()} of gas"
-        addE85Message = "You should add ${resultToShow.e85ToAdd.toString()} of E85"
+    private fun setOutputValues(resultToShow: EthanolMixCalculator.Result) {
+        addGasMessage = "You should add ${resultToShow.pumpGasToAdd.toString(2)} of gas"
+        addE85Message = "You should add ${resultToShow.e85ToAdd.toString(2)} of E85"
+    }
+
+    private fun clearOutputValues() {
+        addGasMessage = ""
+        addE85Message = ""
     }
 }

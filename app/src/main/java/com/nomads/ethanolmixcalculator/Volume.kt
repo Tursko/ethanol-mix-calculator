@@ -1,5 +1,7 @@
 package com.nomads.ethanolmixcalculator
 
+import java.text.DecimalFormat
+
 data class Volume(val value: Double, val uom: UoM) {
 
     val asGallons: Volume
@@ -55,9 +57,15 @@ data class Volume(val value: Double, val uom: UoM) {
         }
     }
 
-    // TODO uom to string converter and value formatting
-    override fun toString(): String {
-        return "$value $uom"
+    override fun toString() = "$value $uom"
+
+    fun toString(decimalPlaces: Int): String {
+        var pattern = "."
+        for(i in 1..decimalPlaces)
+            pattern += "0"
+
+        val dec = DecimalFormat(pattern)
+        return "${dec.format(value)} $uom"
     }
 
     enum class UoM {

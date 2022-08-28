@@ -210,12 +210,14 @@
             android:id="@+id/button_calculate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="118dp"
+            android:layout_marginBottom="220dp"
+            android:onClick="@{(view) -> viewModel.onCalculateButtonClicked(view)}"
             android:text="@string/calculate"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edit_target_ethanol_percentage"
-            android:onClick="@{(view) -> viewModel.onCalculateButtonClicked(view)}"/>
-        
+            app:layout_constraintTop_toBottomOf="@+id/edit_target_ethanol_percentage" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

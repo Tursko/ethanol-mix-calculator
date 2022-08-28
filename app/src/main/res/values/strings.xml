@@ -15,10 +15,10 @@
     <string name="ethanol_mix_calculator">Ethanol Mix Calculator</string>
     <string name="tank_size">Tank Size:</string>
     <string name="_0_0">0.0</string>
-    <string name="current_fuel">Current Fuel:</string>
+    <string name="current_fuel">Current Fuel %:</string>
     <string name="current_ethanol_mix">Current Ethanol Mix:</string>
     <string name="_0">0</string>
-    <string name="pump_gas_ethanol_mix">Pump Gas Ethanol Mix:</string>
-    <string name="pump_e85_ethanol_mix">Pump E85 Ethanol Mix:</string>
+    <string name="pump_gas_ethanol_mix">Pump Gas Ethanol %:</string>
+    <string name="pump_e85_ethanol_mix">E85 Ethanol %:</string>
     <string name="desired_ethanol_mix">Desired Ethanol Mix:</string>
 </resources>

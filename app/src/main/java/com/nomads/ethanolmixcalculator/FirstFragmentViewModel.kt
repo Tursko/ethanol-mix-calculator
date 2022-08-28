@@ -16,6 +16,7 @@ class FirstFragmentViewModel(private val calculator: EthanolMixCalculator) : Bas
                 return
 
             calculator.tankVolume = Volume(newVal, calculator.tankVolume.uom)
+            clearOutputValues()
             notifyPropertyChanged(BR.tankVolumeValue)
         }
 
@@ -30,6 +31,7 @@ class FirstFragmentViewModel(private val calculator: EthanolMixCalculator) : Bas
 
             val newVal = enumValues[value]
             calculator.tankVolume = Volume(calculator.tankVolume.value, newVal)
+            clearOutputValues()
             notifyPropertyChanged(BR.tankVolumeUomPosition)
         }
 
@@ -47,6 +49,7 @@ class FirstFragmentViewModel(private val calculator: EthanolMixCalculator) : Bas
                 return
 
             calculator.currentFuelPercentage = newVal
+            clearOutputValues()
             notifyPropertyChanged(BR.currentFuelPercentage)
         }
 
@@ -60,6 +63,7 @@ class FirstFragmentViewModel(private val calculator: EthanolMixCalculator) : Bas
                 return
 
             calculator.currentEthanolPercentage = newVal
+            clearOutputValues()
             notifyPropertyChanged(BR.currentEthanolPercentage)
         }
 
@@ -73,6 +77,7 @@ class FirstFragmentViewModel(private val calculator: EthanolMixCalculator) : Bas
                 return
 
             calculator.gasEthanolPercentage = newVal
+            clearOutputValues()
             notifyPropertyChanged(BR.gasEthanolPercentage)
         }
 
@@ -86,6 +91,7 @@ class FirstFragmentViewModel(private val calculator: EthanolMixCalculator) : Bas
                 return
 
             calculator.e85EthanolPercentage = newVal
+            clearOutputValues()
             notifyPropertyChanged(BR.e85EthanolPercentage)
         }
 
@@ -99,6 +105,38 @@ class FirstFragmentViewModel(private val calculator: EthanolMixCalculator) : Bas
                 return
 
             calculator.targetEthanolPercentage = newVal
+            clearOutputValues()
             notifyPropertyChanged(BR.targetEthanolPercentage)
         }
+
+    @get:Bindable
+    var addGasMessage: String = ""
+        set(value) {
+            if (value == field)
+                return
+
+            field = value
+            notifyPropertyChanged(BR.addGasMessage)
+        }
+
+    @get:Bindable
+    var addE85Message: String = ""
+        set(value) {
+            if (value == field)
+                return
+
+            field = value
+            notifyPropertyChanged(BR.addE85Message)
+        }
+
+    fun clearOutputValues() {
+        addGasMessage = ""
+        addE85Message = ""
+    }
+
+    fun setOutputValues(resultToShow: EthanolMixCalculator.Result) {
+        // TODO format floats tto show less decimal places
+        addGasMessage = "You should add ${resultToShow.pumpGasToAdd.toString()} of gas"
+        addE85Message = "You should add ${resultToShow.e85ToAdd.toString()} of E85"
+    }
 }

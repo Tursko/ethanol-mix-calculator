@@ -43,9 +43,10 @@ class FirstFragment : Fragment() {
 //        }
 
         binding.buttonCalculate.setOnClickListener { view ->
-            val result = _calculator!!.calculateMix()
 
-            // TODO set pump gas and pump e85 values on view model here to update UI
+            // TODO more elegant way to do this?
+            val result = _calculator!!.calculateMix()
+            _binding?.viewModel?.setOutputValues(result)
 
             Snackbar.make(view, "Perform calculation", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()

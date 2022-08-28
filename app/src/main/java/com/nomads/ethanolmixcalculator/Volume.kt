@@ -55,6 +55,11 @@ data class Volume(val value: Double, val uom: UoM) {
         }
     }
 
+    // TODO uom to string converter and value formatting
+    override fun toString(): String {
+        return "$value $uom"
+    }
+
     enum class UoM {
         Liters,
         Gallons

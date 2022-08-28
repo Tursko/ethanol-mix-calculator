@@ -15,6 +15,7 @@ import com.nomads.ethanolmixcalculator.databinding.FragmentFirstBinding
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
+    private var _calculator: EthanolMixCalculator? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -26,7 +27,10 @@ class FirstFragment : Fragment() {
     ): View? {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
-        binding.viewModel = FirstFragmentViewModel(EthanolMixCalculator())
+
+        // TODO temp code - should populate with default calculator values if nothing to pull from DB
+        _calculator = EthanolMixCalculator(Volume(12.4, Volume.UoM.Gallons), 0.1, 0.75, 0.3, 0.2, 0.1)
+        binding.viewModel = FirstFragmentViewModel(_calculator!!)
 
         return binding.root
     }
@@ -34,11 +38,15 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
+//        binding.buttonFirst.setOnClickListener {
+//            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+//        }
 
         binding.buttonCalculate.setOnClickListener { view ->
+            val result = _calculator!!.calculateMix()
+
+            // TODO set pump gas and pump e85 values on view model here to update UI
+
             Snackbar.make(view, "Perform calculation", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }

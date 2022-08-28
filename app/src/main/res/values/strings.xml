@@ -12,10 +12,13 @@
 
     <!-- Strings used for the main form -->
     <string name="calculate">Calculate</string>
-    <string name="tank_size">Gas Tank Size</string>
-    <string name="gas_eth_percent">Gas Ethanol Percentage</string>
-    <string name="e85_eth_percent">E85 Ethanol Percentage</string>
-    <string name="target_eth_mix">Target Ethanol Mixture</string>
-    <string name="curr_fuel_level_percent">Current Fuel Level Percentage</string>
-    <string name="curr_eth_mix">Current Ethanol Mixture</string>
+    <string name="ethanol_mix_calculator">Ethanol Mix Calculator</string>
+    <string name="tank_size">Tank Size:</string>
+    <string name="_0_0">0.0</string>
+    <string name="current_fuel">Current Fuel:</string>
+    <string name="current_ethanol_mix">Current Ethanol Mix:</string>
+    <string name="_0">0</string>
+    <string name="pump_gas_ethanol_mix">Pump Gas Ethanol Mix:</string>
+    <string name="pump_e85_ethanol_mix">Pump E85 Ethanol Mix:</string>
+    <string name="desired_ethanol_mix">Desired Ethanol Mix:</string>
 </resources>

@@ -22,7 +22,7 @@ class EthanolMixCalculator(
         get() = tankVolume * targetEthanolPercentage
 
 
-    fun CalculateMix() : Result {
+    fun calculateMix() : Result {
         val e85ToAdd = (currentEthanol + (tankVolume - currentFuel) * gasEthanolPercentage - targetEthanol) / (gasEthanolPercentage - e85EthanolPercentage)
         val pumpGasToAdd = tankVolume - currentFuel - e85ToAdd
         return Result(e85ToAdd, pumpGasToAdd, targetEthanolPercentage)

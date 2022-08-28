@@ -1,42 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
-    <TextView
-        android:id="@+id/textview_first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_first_fragment"
-        app:layout_constraintBottom_toTopOf="@id/button_first"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable
+            name="viewModel"
+            type="com.nomads.ethanolmixcalculator.FirstFragmentViewModel"/>
+    </data>
 
-    <Button
-        android:id="@+id/button_first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_first" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button_calculate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="145dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="145dp"
-        android:layout_marginBottom="135dp"
-        android:text="@string/calculate"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_first" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- TODO radio group for tank size UoM (Gallons, Liters) -->
+        <!-- TODO adapter for tank size value and uom-->
+        <EditText
+            android:id="@+id/edittext_tank_size"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Tank size"
+            android:text="@={viewModel.tankVolumeValue}"/>
+
+        <!-- TODO how to use formatter for percentage sign?-->
+        <EditText
+            android:id="@+id/edittext_curr_fuel_percentage"
+            app:layout_constraintTop_toBottomOf="@id/edittext_tank_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Current Fuel Percentage"/>
+
+        <!-- TODO how to use formatter for percentage sign?-->
+        <EditText
+            android:id="@+id/edittext_curr_ethanol_percentage"
+            app:layout_constraintTop_toBottomOf="@id/edittext_curr_fuel_percentage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Current Ethanol Percentage"/>
+
+        <!-- TODO how to use formatter for percentage sign?-->
+        <EditText
+            android:id="@+id/edittext_gas_ethanol_percentage"
+            app:layout_constraintTop_toBottomOf="@id/edittext_curr_ethanol_percentage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Pump Gas Ethanol Percentage"/>
+
+        <!-- TODO how to use formatter for percentage sign?-->
+        <EditText
+            android:id="@+id/edittext_e85_ethanol_percentage"
+            app:layout_constraintTop_toBottomOf="@id/edittext_gas_ethanol_percentage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Pump E85 Ethanol Percentage"/>
+
+        <!-- TODO how to use formatter for percentage sign?-->
+        <EditText
+            android:id="@+id/edittext_target_ethanol_percentage"
+            app:layout_constraintTop_toBottomOf="@id/edittext_e85_ethanol_percentage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Desired Final Ethanol Percentage"/>
+
+
+
+        <TextView
+            android:id="@+id/textview_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_first_fragment"
+            app:layout_constraintBottom_toTopOf="@id/button_first"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textview_first" />
+
+        <Button
+            android:id="@+id/button_calculate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="145dp"
+            android:layout_marginTop="38dp"
+            android:layout_marginEnd="145dp"
+            android:layout_marginBottom="135dp"
+            android:text="@string/calculate"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_first" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

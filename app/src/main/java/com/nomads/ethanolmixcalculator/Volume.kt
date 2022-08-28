@@ -1,6 +1,6 @@
 package com.nomads.ethanolmixcalculator
 
-class Volume(val value: Double, val uom: UoM) {
+data class Volume(val value: Double, val uom: UoM) {
 
     val asGallons: Volume
         get() = convert(this, UoM.Gallons)

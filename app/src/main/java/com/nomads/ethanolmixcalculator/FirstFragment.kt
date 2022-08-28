@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.nomads.ethanolmixcalculator.databinding.FragmentFirstBinding
@@ -27,8 +26,9 @@ class FirstFragment : Fragment() {
     ): View? {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
-        return binding.root
+        binding.viewModel = FirstFragmentViewModel(EthanolMixCalculator())
 
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

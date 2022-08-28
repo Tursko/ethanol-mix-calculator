@@ -1,8 +1,10 @@
 package com.nomads.ethanolmixcalculator
 
 import android.view.View
+import android.widget.Spinner
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
+import androidx.databinding.BindingAdapter
 import com.google.android.material.snackbar.Snackbar
 import kotlin.math.roundToInt
 
@@ -43,6 +45,11 @@ class FirstFragmentViewModel(private val calculator: EthanolMixCalculator) : Bas
     // binding for UoM dropdown options
     @Bindable
     fun getVolumeUomOptions() : Array<String> = Volume.UoM.values().map { it.name }.toTypedArray()
+
+    // hack for UoM changed to clear output values. The 'correct' implementation seems to be with @BindingAdapter annotation...
+    fun onTankSizeUomChanged() {
+        clearOutputValues()
+    }
 
     @get:Bindable
     var currentFuelPercentage: String

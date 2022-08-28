@@ -57,7 +57,7 @@
                 android:layout_weight="0"
                 android:spinnerMode="dropdown"
                 android:selectedItemPosition="@{viewModel.tankVolumeUomPosition}"
-
+                android:onItemSelected="@{() -> viewModel.onTankSizeUomChanged()}"
                 android:entries="@{viewModel.volumeUomOptions}"/>
 
         </LinearLayout>

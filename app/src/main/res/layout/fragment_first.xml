@@ -16,169 +16,188 @@
         android:padding="16dp"
         android:importantForAutofill="noExcludeDescendants">
 
-        <TextView
-            android:id="@+id/title_text"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ethanol_mix_calculator"
-            android:gravity="center_horizontal"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:paddingBottom="16dp"/>
-
         <LinearLayout
             android:id="@+id/edit_tank_size"
-            app:layout_constraintTop_toBottomOf="@id/title_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:minHeight="48dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="@string/tank_size"
-                android:textAlignment="gravity"
-                android:layout_gravity="center_vertical" />
+                android:textAlignment="gravity" />
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:inputType="numberDecimal"
                 android:hint="@string/_0_0"
-                android:text="@={viewModel.tankVolumeValue}"/>
+                android:inputType="numberDecimal"
+                android:text="@={viewModel.tankVolumeValue}" />
 
             <!-- TODO these bindings don't work. Need to use an adapter?  or attrChanged-->
             <Spinner
                 android:layout_width="104dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:spinnerMode="dropdown"
-                android:selectedItemPosition="@{viewModel.tankVolumeUomPosition}"
+                android:entries="@{viewModel.volumeUomOptions}"
                 android:onItemSelected="@{() -> viewModel.onTankSizeUomChanged()}"
-                android:entries="@{viewModel.volumeUomOptions}"/>
+                android:selectedItemPosition="@{viewModel.tankVolumeUomPosition}"
+                android:spinnerMode="dropdown" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/edit_current_fuel_percentage"
-            app:layout_constraintTop_toBottomOf="@id/edit_tank_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:minHeight="48dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_tank_size">
 
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="@string/current_fuel"
-                android:textAlignment="gravity"
-                android:layout_gravity="center_vertical" />
+                android:textAlignment="gravity" />
 
             <!-- TODO how to use formatter for percentage sign?-->
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
+                android:layout_height="match_parent"
                 android:hint="@string/_0"
-                android:text="@={viewModel.currentFuelPercentage}"/>
+                android:inputType="number"
+                android:text="@={viewModel.currentFuelPercentage}" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/edit_current_ethanol_percentage"
-            app:layout_constraintTop_toBottomOf="@id/edit_current_fuel_percentage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:minHeight="48dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_current_fuel_percentage">
 
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="@string/current_ethanol_mix"
-                android:textAlignment="gravity"
-                android:layout_gravity="center_vertical" />
+                android:textAlignment="gravity" />
 
             <!-- TODO how to use formatter for percentage sign?-->
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
+                android:layout_height="match_parent"
                 android:hint="@string/_0"
-                android:text="@={viewModel.currentEthanolPercentage}"/>
+                android:inputType="number"
+                android:text="@={viewModel.currentEthanolPercentage}" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/edit_gas_ethanol_percentage"
-            app:layout_constraintTop_toBottomOf="@id/edit_current_ethanol_percentage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:minHeight="48dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_current_ethanol_percentage">
 
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="@string/pump_gas_ethanol_mix"
-                android:textAlignment="gravity"
-                android:layout_gravity="center_vertical" />
+                android:textAlignment="gravity" />
 
             <!-- TODO how to use formatter for percentage sign?-->
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
+                android:layout_height="match_parent"
                 android:hint="@string/_0"
-                android:text="@={viewModel.gasEthanolPercentage}"/>
+                android:inputType="number"
+                android:text="@={viewModel.gasEthanolPercentage}" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/edit_e85_ethanol_percentage"
-            app:layout_constraintTop_toBottomOf="@id/edit_gas_ethanol_percentage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:minHeight="48dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_gas_ethanol_percentage">
 
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="@string/pump_e85_ethanol_mix"
-                android:textAlignment="gravity"
-                android:layout_gravity="center_vertical" />
+                android:textAlignment="gravity" />
 
             <!-- TODO how to use formatter for percentage sign?-->
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
+                android:layout_height="match_parent"
                 android:hint="@string/_0"
-                android:text="@={viewModel.e85EthanolPercentage}"/>
+                android:inputType="number"
+                android:text="@={viewModel.e85EthanolPercentage}" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/edit_target_ethanol_percentage"
-            app:layout_constraintTop_toBottomOf="@id/edit_e85_ethanol_percentage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:minHeight="48dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_e85_ethanol_percentage">
 
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="@string/desired_ethanol_mix"
-                android:textAlignment="gravity"
-                android:layout_gravity="center_vertical" />
+                android:textAlignment="gravity" />
 
             <!-- TODO how to use formatter for percentage sign?-->
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
+                android:layout_height="match_parent"
                 android:hint="@string/_0"
-                android:text="@={viewModel.targetEthanolPercentage}"/>
+                android:inputType="number"
+                android:text="@={viewModel.targetEthanolPercentage}" />
 
         </LinearLayout>
 
@@ -210,14 +229,12 @@
             android:id="@+id/button_calculate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="118dp"
-            android:layout_marginBottom="220dp"
+            android:layout_marginBottom="224dp"
             android:onClick="@{(view) -> viewModel.onCalculateButtonClicked(view)}"
             android:text="@string/calculate"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_target_ethanol_percentage" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
